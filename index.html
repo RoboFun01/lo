@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="af">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Werkskadu — Lewensoriëntering Graad 11</title>
+<meta name="description" content="Drie maatskappye, drie dae, drie onderhoude.">
+<meta name="theme-color" content="#FEFEFE">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+<style>:root{
+  --paper:#FEFEFE;
+  --ink:#1C1C1E;
+  --sag:#6C6C6E;
+  --vaag:#B4B4B6;
+  --lyn:#E6E6E4;
+
+  --groen:#0C6B5A;
+  --groen-diep:#0A4438;
+  --groen-lig:#E9F2EF;
+
+  --sans:"Switzer","Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hand:"Caveat","Segoe Script",cursive;
+
+  --kant:clamp(20px,2.5vw,32px);
+  --merk:clamp(21px,1rem + 1.3vw,32px);
+  --nav:clamp(12.5px,.68rem + .58vw,19.5px);
+
+  --stel:clamp(1.25rem,.85rem + 3vmin,3.4rem);
+  --nano:clamp(9px,.5rem + .22vw,12.5px);
+  --ease:cubic-bezier(.19,1,.22,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:var(--nav);font-weight:500;
+  line-height:1.2;letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body.vas{overflow:hidden}
+img{display:block;max-width:100%}
+h1,h2,h3,h4,p,ul,ol,figure,blockquote{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+::selection{background:var(--groen);color:#F7FAF9}
+:focus-visible{outline:1.5px solid var(--groen);outline-offset:4px}
+
+.nano{font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase;color:var(--vaag);line-height:1.5}
+.gr{color:var(--groen)}
+.hand{font-family:var(--hand);color:var(--groen);font-size:1.55em;line-height:1.28;letter-spacing:0;font-weight:500}
+.wrap{padding-inline:var(--kant)}
+
+.woorde .w{display:inline-block;overflow:hidden;vertical-align:top}
+.woorde .w > span{display:inline-block;transform:translateY(105%);transition:transform .9s var(--ease)}
+.woorde.in .w > span{transform:none}
+
+#intro{
+  position:fixed;inset:0;z-index:100;
+  background:var(--groen-diep);color:#F2F7F5;
+  padding:var(--kant);
+  display:grid;grid-template-rows:1fr 1fr 1fr;
+  cursor:pointer;
+}
+#intro.weg{transform:translateY(-101%);transition:transform 1.1s var(--ease);pointer-events:none}
+#intro .st{
+  font-size:var(--stel);font-weight:500;letter-spacing:-.03em;line-height:1.1;
+  max-width:min(19ch,86vw);opacity:0;transform:translateY(16px);align-self:center;
+}
+#intro .st.aan{
+  opacity:1;transform:none;
+  transition:opacity 1.15s cubic-bezier(.3,0,.2,1),
+             transform 1.35s cubic-bezier(.3,0,.2,1);
+}
+#intro .s1{justify-self:start;align-self:start;padding-top:clamp(10px,4vh,40px)}
+#intro .s2{justify-self:center;align-self:center;text-align:center}
+#intro .s3{justify-self:end;align-self:end;text-align:right;padding-bottom:clamp(38px,7vh,70px)}
+#intro .st em{font-style:normal;color:#7FD9C4}
+#intro .maat{
+  position:absolute;left:var(--kant);right:var(--kant);
+  bottom:calc(var(--kant) + env(safe-area-inset-bottom));
+  height:1px;background:rgba(242,247,245,.22);
+}
+#intro .maat b{display:block;height:100%;width:0;background:#7FD9C4;transition:width .85s var(--ease)}
+
+#intro .st.wegvaag{
+
+  opacity:0;
+  transform:none;
+  transition:opacity 1.7s cubic-bezier(.4,0,.25,1);
+}
+
+#volger{
+  position:fixed;top:0;left:0;z-index:90;pointer-events:none;
+  width:22px;height:22px;margin:-11px 0 0 -11px;
+  border:1.5px solid var(--groen);border-radius:50%;
+  display:grid;place-items:center;
+  transition:width .7s cubic-bezier(.3,0,.2,1),height .7s cubic-bezier(.3,0,.2,1),
+             margin .7s cubic-bezier(.3,0,.2,1),background-color .7s cubic-bezier(.3,0,.2,1),
+             opacity .5s cubic-bezier(.3,0,.2,1);
+  opacity:0;
+}
+#volger.aan{opacity:.55}
+
+#volger.groot{width:56px;height:56px;margin:-28px 0 0 -28px;
+  background:var(--groen);border-color:var(--groen);opacity:1}
+#volger b{display:none}
+@media (pointer:coarse){#volger{display:none}}
+
+#vorder{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--groen);z-index:60}
+#bar{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+  padding:var(--kant);pointer-events:none;
+  transition:opacity .45s var(--ease),transform .45s var(--ease);
+}
+#bar.weg{opacity:0;transform:translateY(-16px)}
+#bar .merk{
+  font-size:var(--merk);letter-spacing:-.018em;line-height:1.1;
+  transform-origin:left top;transform:scale(2.15);
+  transition:transform .6s var(--ease);
+}
+#bar.klein .merk{transform:scale(1)}
+@media (max-width:620px){#bar .merk{transform:scale(1.5)}}
+@media (prefers-reduced-motion:reduce){#bar .merk{transition:none}}
+#bar .regs{text-align:right;font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase;color:var(--sag)}
+@media (max-width:620px){#bar .regs{display:none}}
+
+.verhoog{position:relative;height:100svh;display:flex;align-items:center;justify-content:center}
+.ring{position:relative;z-index:0;isolation:isolate;width:min(74vw,1000px);height:min(74svh,660px);touch-action:pan-y}
+
+.ring.hoof{width:min(88vw,1120px);height:min(72svh,700px)}
+@media (max-width:760px){
+  .ring{width:100%;height:min(58svh,460px)}
+  .ring.hoof{width:100%;height:min(62svh,520px)}
+}
+.kaart{
+  position:absolute;left:50%;top:50%;aspect-ratio:1/1;
+  transform:translate(-50%,-50%) scale(.9);
+  opacity:0;transition:opacity .7s var(--ease);
+  will-change:transform;
+}
+.ring.in .kaart{opacity:1}
+.kaart .vel{
+  position:relative;
+  width:100%;height:100%;border-radius:22px;overflow:hidden;
+  background:var(--groen-lig);
+  will-change:opacity,box-shadow;
+}
+
+.merk-il{
+  position:absolute;left:10px;bottom:10px;z-index:2;
+  font-size:9px;letter-spacing:.11em;text-transform:uppercase;font-weight:500;
+  color:#EAF3F0;background:rgba(10,68,56,.82);
+  padding:4px 8px;border-radius:99px;pointer-events:none;
+}
+.kaart img{width:100%;height:100%;object-fit:cover}
+@media (pointer:fine){.kaart{cursor:pointer}}
+.leegfoto{display:flex;align-items:flex-end;padding:14px;font-size:var(--nano);letter-spacing:.07em;text-transform:uppercase;color:var(--groen)}
+
+#hero{padding-bottom:clamp(90px,14vh,150px)}
+#hero .onder{
+  position:absolute;left:var(--kant);right:var(--kant);
+  bottom:calc(var(--kant) + env(safe-area-inset-bottom));
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+}
+#hero .onder .lei{max-width:min(455px,80vw);font-size:var(--nav);line-height:1.2}
+
+#lig{
+  position:fixed;inset:0;z-index:95;
+  background:rgba(10,68,56,.95);
+  display:grid;place-items:center;padding:calc(var(--kant) * 2) var(--kant);
+  opacity:0;pointer-events:none;transition:opacity .45s var(--ease);
+}
+#lig.oop{opacity:1;pointer-events:auto}
+#lig img{
+  max-width:min(1100px,92vw);max-height:84svh;
+  border-radius:22px;object-fit:contain;
+  transform:scale(.94);transition:transform .6s var(--ease);
+  box-shadow:0 40px 90px rgba(0,0,0,.4);
+}
+#lig.oop img{transform:none}
+#lig .toe{
+  position:absolute;top:var(--kant);right:var(--kant);
+  color:#EAF3F0;font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase;
+}
+
+.insig{
+  min-height:88svh;display:grid;align-items:center;
+  gap:clamp(28px,5vw,72px);
+  grid-template-columns:1fr;
+  padding-block:clamp(50px,10vh,120px);
+}
+@media (min-width:900px){
+  .insig{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)}
+  .insig.omgekeer > p{order:2}
+  .insig.omgekeer > .grootbeeld{order:1}
+}
+.insig p{font-size:var(--stel);font-weight:500;letter-spacing:-.03em;line-height:1.1;max-width:min(20ch,90vw)}
+.insig em{font-style:normal;color:var(--groen)}
+
+.grootbeeld{
+  position:relative;overflow:hidden;border-radius:24px;
+  background:var(--groen-lig);
+  aspect-ratio:4/3;
+  clip-path:inset(0 0 100% 0);
+}
+.grootbeeld.in{clip-path:inset(0 0 0 0);transition:clip-path 1.15s var(--ease)}
+.grootbeeld img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);will-change:transform}
+.grootbeeld .merk-il{left:18px;bottom:auto;top:16px}
+.grootbeeld figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:34px 18px 14px;
+  font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase;color:#F2F7F5;
+
+  background:linear-gradient(to top,rgba(8,26,21,.72),transparent);
+}
+@media (pointer:fine){.grootbeeld{cursor:none}}
+
+.onderhoud{padding-block:clamp(40px,8vh,90px)}
+
+.o-kop{
+  border-top:2px solid var(--groen);
+  padding-top:clamp(18px,3vh,30px);
+  padding-bottom:clamp(10px,2vh,20px);
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:0 clamp(16px,3vw,44px);
+  align-items:start;
+}
+.o-kop .n{
+  font-size:clamp(2.8rem,1.4rem + 6vw,7rem);
+  font-weight:500;letter-spacing:-.05em;line-height:.78;
+  color:var(--groen);font-variant-numeric:tabular-nums;
+  margin-top:-.04em;
+
+  overflow:hidden;display:block;
+}
+.o-kop .n span{display:block;transform:translateY(102%);transition:transform 1s var(--ease)}
+.o-kop.in .n span{transform:none}
+.o-kop h2{
+  font-size:clamp(1.9rem,1.05rem + 3.4vw,4.4rem);
+  font-weight:500;letter-spacing:-.035em;line-height:.98;
+}
+.o-kop .feite{
+  grid-column:2;margin-top:clamp(14px,2.4vh,26px);
+  display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;
+  font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase;color:var(--sag);
+}
+@media (max-width:640px){
+  .o-kop{grid-template-columns:1fr;gap:8px}
+  .o-kop .n{font-size:clamp(2.4rem,10vw,3.4rem)}
+  .o-kop .feite{grid-column:1}
+}
+
+.speld{
+  display:inline-flex;align-items:center;gap:7px;
+  color:var(--groen);border:1px solid var(--groen-lig);
+  background:var(--groen-lig);border-radius:999px;
+  padding:5px 11px 5px 8px;
+  transition:background-color .3s var(--ease),color .3s var(--ease);
+}
+.speld:hover{background:var(--groen);color:#F2F7F5}
+.speld svg{width:11px;height:14px;flex:0 0 auto;overflow:visible}
+.speld svg path{fill:currentColor}
+.speld svg circle{fill:currentColor;opacity:.35;transform-origin:50% 38%;animation:puls 2.6s ease-out infinite}
+@keyframes puls{0%{transform:scale(.5);opacity:.5}70%{transform:scale(2.4);opacity:0}100%{opacity:0}}
+.speld .ko{opacity:.7;font-variant-numeric:tabular-nums}
+
+.o-lyf{margin-top:clamp(26px,5vh,54px);display:grid;gap:clamp(28px,5vh,56px)}
+.o-lyf .drie{display:grid;gap:clamp(26px,4vw,52px);grid-template-columns:1fr}
+.o-lyf .drie > div{border-top:1px solid var(--groen);padding-top:16px}
+.o-lyf .drie h3.et{margin-bottom:14px}
+@media (min-width:880px){.o-lyf .drie{grid-template-columns:repeat(3,1fr)}}
+h3.et{font-size:clamp(11px,.6rem + .45vw,17px);letter-spacing:.075em;text-transform:uppercase;color:var(--groen);margin-bottom:12px}
+.o-lyf p{font-size:clamp(14.5px,.78rem + .6vw,20px);font-weight:400;line-height:1.5;color:var(--sag);max-width:56ch}
+.o-lyf p + p{margin-top:.8em}
+.o-lyf .opsom p{font-size:clamp(17px,.9rem + 1.35vw,32px);font-weight:500;line-height:1.26;color:var(--ink);max-width:38ch;letter-spacing:-.022em}
+
+ol.dag{position:relative}
+ol.dag::before{
+  content:"";position:absolute;left:3px;top:22px;bottom:22px;width:1px;
+  background:var(--groen);opacity:.22;
+}
+.dag li{
+  display:grid;grid-template-columns:6.4rem 1fr;gap:clamp(12px,2.4vw,32px);
+  padding-block:15px;border-bottom:1px solid var(--lyn);
+}
+.dag li:last-child{border-bottom:0}
+.dag time{
+  position:relative;padding-left:20px;padding-top:.28em;
+  font-size:clamp(11px,.6rem + .3vw,14.5px);letter-spacing:.06em;
+  color:var(--groen);font-variant-numeric:tabular-nums;
+}
+.dag time::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:7px;height:7px;border-radius:50%;background:var(--groen);
+}
+
+.qa li{border-bottom:1px solid var(--lyn);padding-block:16px}
+.qa li:first-child{border-top:1px solid var(--lyn)}
+.qa li{border-bottom:1px solid var(--lyn);padding-block:22px}
+
+.qa .v{font-weight:500;font-size:clamp(15px,.8rem + .68vw,22px);line-height:1.3;letter-spacing:-.016em;color:var(--groen)}
+.qa .a{color:var(--sag);margin-top:9px;font-weight:400;font-size:clamp(14.5px,.78rem + .6vw,20px);line-height:1.55}
+
+.uit{
+  background:transparent;
+  padding:clamp(22px,4vw,38px);
+  border-radius:22px;
+  position:relative;overflow:hidden;
+}
+
+.uit::before{
+  content:"";position:absolute;inset:0;background:var(--groen-lig);
+  transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .85s var(--ease);
+}
+.uit.in::before{transform:scaleX(1)}
+.uit > *{position:relative;z-index:1}
+.uit h3.et{opacity:0;transform:translateY(8px);transition:opacity .5s .35s var(--ease),transform .5s .35s var(--ease)}
+.uit.in h3.et{opacity:1;transform:none}
+
+.uit .hand{
+  display:block;max-width:none;font-size:1.85em;
+  clip-path:inset(0 100% -18% 0);
+  transition:clip-path 1.5s .5s cubic-bezier(.35,.02,.24,1);
+}
+.uit.in .hand{clip-path:inset(0 -6% -18% 0)}
+
+#slot{margin-top:clamp(28px,5vh,56px)}
+#slot .portret{
+  position:relative;height:100svh;
+  margin-inline:calc(var(--kant) * -1);
+  overflow:hidden;background:var(--groen-diep);
+}
+#slot .portret img{width:100%;height:118%;object-fit:cover;opacity:.94;will-change:transform}
+#slot .portret .op-teks{
+  position:absolute;left:var(--kant);right:var(--kant);bottom:var(--kant);
+  color:#F2F7F5;font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase;
+}
+#slot .groenblad{
+  background:var(--groen-diep);color:#EAF3F0;
+  margin-inline:calc(var(--kant) * -1);
+  padding:clamp(48px,7vh,78px) clamp(24px,4vw,64px);
+  display:flex;justify-content:center;
+}
+
+#slot .groenblad p{
+  font-size:clamp(.92rem,.78rem + .62vw,1.45rem);font-weight:400;
+  letter-spacing:-.005em;line-height:1.6;
+  max-width:min(58ch,92vw);text-align:center;margin:0;
+}
+#slot .groenblad em{font-style:normal;color:#7FD9C4}
+
+footer{border-top:1px solid var(--lyn);margin-top:0;padding-block:20px 28px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;
+  font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase;color:var(--vaag)}
+footer button{color:var(--groen);border-bottom:1px solid currentColor;font-size:inherit;letter-spacing:inherit;text-transform:inherit}
+footer .bronne{color:var(--vaag)}
+
+#privaat{
+  position:fixed;inset:0;z-index:80;background:var(--paper);
+  padding:var(--kant);overflow-y:auto;
+  transform:translateY(101%);transition:transform .6s var(--ease);
+}
+#privaat.oop{transform:none}
+#privaat .binne{max-width:62ch}
+#privaat h2{font-size:clamp(1.4rem,1.05rem + 1.2vw,2.2rem);font-weight:500;letter-spacing:-.028em;margin-bottom:6px}
+#privaat h3{font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase;color:var(--groen);margin:30px 0 8px}
+#privaat p{font-weight:400;font-size:clamp(13.5px,.76rem + .38vw,17.5px);line-height:1.5;margin-bottom:.8em}
+#privaat ul{margin-bottom:.8em}
+#privaat li{font-weight:400;font-size:clamp(13.5px,.76rem + .38vw,17.5px);line-height:1.5;padding-left:14px;position:relative;margin-bottom:4px}
+#privaat li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:1px;background:var(--groen)}
+#privaat .toe{position:fixed;right:var(--kant);top:var(--kant);color:var(--groen);font-size:var(--nano);letter-spacing:.09em;text-transform:uppercase}
+
+.op{opacity:0;transform:translateY(18px)}
+.op.in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.001ms!important}
+  .op{opacity:1!important;transform:none!important}
+  .kaart{opacity:1!important}
+  .grootbeeld{clip-path:none!important}
+  .uit{background:var(--groen-lig)}
+  .uit::before{display:none}
+  .uit .hand{clip-path:none!important}
+  .uit h3.et{opacity:1!important;transform:none!important}
+  .woorde .w > span{transform:none!important}
+  #volger{display:none}
+}
+
+@media print{
+  #intro,#bar,#vorder,#privaat,#volger,#lig,#slot .portret{display:none!important}
+  body{background:#fff;color:#000;font-size:10pt}
+  .verhoog{height:auto;display:block}
+  .ring{width:100%;height:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .kaart{position:static;width:auto!important;height:auto;transform:none!important;opacity:1!important}
+  .kaart .vel{box-shadow:none!important;opacity:1!important;border:1px solid #ccc;border-radius:4px}
+  .insig{min-height:0;display:block;padding-block:10px}
+  .grootbeeld{clip-path:none!important;aspect-ratio:16/9}
+  .uit{background:#f4f4f2}
+  .uit::before{display:none}
+  .uit .hand{clip-path:none!important}
+  .uit h3.et{opacity:1!important;transform:none!important}
+  .grootbeeld img{transform:none!important}
+  .onderhoud{page-break-before:always;padding-block:0}
+  .op{opacity:1!important;transform:none!important}
+  .woorde .w > span{transform:none!important}
+  #slot .groenblad{background:#fff;color:#000;min-height:0;padding:20px 0}
+}
+</style>
+</head>
+<body>
+
+<div id="intro" role="button" tabindex="0" aria-label="Slaan die opening oor">
+  <div class="st s1" id="st1"></div>
+  <div class="st s2" id="st2"></div>
+  <div class="st s3" id="st3"></div>
+  <div class="maat"><b id="intro-maat"></b></div>
+</div>
+
+<div id="volger" aria-hidden="true"><b></b></div>
+
+<div id="lig" aria-hidden="true">
+  <button type="button" class="toe" id="lig-toe">Maak toe</button>
+  <img alt="">
+</div>
+<div id="vorder"></div>
+<header id="bar">
+  <span class="merk">Werkskadu</span>
+  <span class="regs" id="bar-regs"></span>
+</header>
+
+<main>
+  <section id="hero" class="verhoog wrap">
+    <div class="ring" id="ring-hero"></div>
+    <div class="onder">
+      <p class="lei" id="hero-lei"></p>
+    </div>
+  </section>
+
+  <div id="inhoudsblok"></div>
+
+  <section id="slot" class="wrap">
+    <figure class="portret" id="slot-portret" data-volg=""></figure>
+    <div class="groenblad"><p id="slot-teks" class="woorde"></p></div>
+  </section>
+
+  <footer class="wrap">
+    <span id="krediet"></span>
+    <button type="button" id="privaat-oop">Privaatheid</button>
+  </footer>
+</main>
+
+<section id="privaat" aria-hidden="true">
+  <button type="button" class="toe" id="privaat-toe">Maak toe</button>
+  <div class="binne">
+    <h2>Privacy Policy</h2>
+    <p class="nano">Last updated 29 August 2026</p>
+
+    <h3>What this site is</h3>
+    <p>A Grade 11 Life Orientation school assignment. It is a single static HTML file. No server, no database, no accounts, no sign-in.</p>
+
+    <h3>What is collected</h3>
+    <p>Nothing. This page sets no cookies, runs no analytics, has no forms and tracks nobody. It stores nothing in your browser. Three things do happen outside this page:</p>
+    <ul>
+      <li>Fonts are loaded from Fontshare and Google Fonts. Those services see your IP address at the moment they serve the font.</li>
+      <li>One image, the aerial photograph of Tygerberg Hospital, is loaded from Wikimedia Commons. That service sees your IP address when it serves the image.</li>
+      <li>GitHub Pages hosts the file and keeps standard server logs, which are not accessible to me.</li>
+    </ul>
+    <p>Nothing you do on this page is sent anywhere. Opening a photograph, scrolling, or following a map link is not recorded.</p>
+
+    <h3>Search engines</h3>
+    <p>This site asks search engines not to index it. It is coursework, not a publication.</p>
+
+    <h3>Locations</h3>
+    <p>Each interview shows the town or city where it took place and links to a map. No street address of a private workplace is given.</p>
+
+    <h3>Photographs</h3>
+    <p>Most photographs were taken by me during the three visits. Every other image carries a visible badge and was not taken by me.</p>
+    <ul>
+      <li>Images badged "Dragonfly-foto" come from <a class="gr" href="https://dragonflyaerospace.com" target="_blank" rel="noopener noreferrer">Dragonfly Aerospace</a>'s own website and remain their property. They are used here to show the facility seen during the visit, and will be removed on request.</li>
+      <li>The badged medical images come from <a class="gr" href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a> and are freely licensed.</li>
+      <li>The aerial photograph of Tygerberg Hospital is by Dfmalan, used under the <a class="gr" href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 3.0</a> licence, and cropped for this page.</li>
+    </ul>
+
+    <h3>POPIA</h3>
+    <p>Under the Protection of Personal Information Act (Act 4 of 2013), this page processes no personal information about visitors.</p>
+
+    <h3>Removal</h3>
+    <p>If you want anything on this page removed, email me and it will be removed.</p>
+
+    <h3>Contact</h3>
+    <p><a class="gr" href="mailto:me@danielschoonraad.com">me@danielschoonraad.com</a></p>
+  </div>
+</section>
+
+
+<script id="inhoud">window.DATA = {
+
+  leerder: "Daniël Schoonraad",
+  graad:   "Graad 11",
+  vak:     "Lewensoriëntering",
+  ingehandig: "28 Augustus 2026",
+
+  opening: [
+    "In matriek moet jy *besluit* wat jy met jou lewe wil doen.",
+    "In 'n era waar inligting in oormaat is, is die antwoord in jou *hande*.",
+    "Kom saam op my reis deur drie beroepe, op soek na my *antwoorde*."
+  ],
+
+  hero_lei: "Ek het hierdie jaar die voorreg gehad om drie uiteenlopende beroepe te werkskadu. Die ervaring gaan my help met die keuse van wat om te studeer.",
+
+  hero_fotos: [
+    { src: "fotos/ortopeed-span.jpeg",        alt: "Die ortopediese span by Tygerberg" },
+    { src: "fotos/dragonfly-ingang.jpeg",     alt: "Dragonfly Aerospace se ingang" },
+    { src: "fotos/www-ateljee.jpeg",          alt: "Die Wie Weet Wat-ateljee" },
+    { src: "fotos/df-skoonkamer-span.jpg",    alt: "Die skoonkamer by Dragonfly, met 'n satelliet op die bank",
+      illustrasie: true, merk: "Dragonfly-foto" },
+    { src: "fotos/dragonfly-skoonkamer.jpeg", alt: "Die skoonkamer by Dragonfly" },
+    { src: "fotos/df-ontvangs.jpg",           alt: "Dragonfly Aerospace se ontvangs",
+      illustrasie: true, merk: "Dragonfly-foto" }
+  ],
+
+  insigte: [
+    {
+      teks: "Die eerste dag het my geleer dat sukses harde werk, lang ure en *deursettingsvermoë* verg.",
+
+      foto: {
+        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Tygerberg_from_air.jpg/1280px-Tygerberg_from_air.jpg",
+        alt: "Tygerberg-hospitaal en die mediese kampus uit die lug",
+        byskrif: "Tygerberg \u00b7 foto Dfmalan, CC BY 3.0",
+        illustrasie: true
+      }
+    },
+    {
+      teks: "Die tweede dag het my geleer dat 'n werkplek werklik *pret* kan wees, al is die druk en die verantwoordelikheid hoog.",
+      foto: { src: "fotos/dragonfly-ingang.jpeg", alt: "Dragonfly Aerospace, Stellenbosch", byskrif: "Dag twee · Dragonfly Aerospace" }
+    },
+    {
+      teks: "Die derde dag het my 'n nuwe *perspektief* gegee: universiteitsopleiding is nie die enigste pad na 'n loopbaan nie.",
+      foto: { src: "fotos/www-kameras.jpeg", alt: "Die kameras op die stel", byskrif: "Dag drie · Wie Weet Wat" }
+    }
+  ],
+
+  onderhoude: [
+    {
+      beroep:  "Mediese ortopeed",
+      persoon: "Dr Rudolph G Venter",
+      rol:     "Ortopediese chirurg, ledemaatrekonstruksie en navorser",
+      ligging: {
+        naam: "Tygerberg-hospitaal, Bellville",
+        koordinate: "33.911\u00b0S 18.610\u00b0O",
+        kaart: "https://www.google.com/maps/search/?api=1&query=-33.911,18.610"
+      },
+
+      opsomming: "'n Dag saam met 'n ortopediese chirurg by Tygerberg Hospitaal.",
+
+      daagliks:   "'n Ortopeed is 'n dokter wat gespesialiseer het om chirurgie op bene te kan doen. Hulle week is gewoonlik in blokke verdeel. Die dokter wat ek geskadu het, besoek twee dae 'n buitepasiëntkliniek, waar nuwe verwysings gesien word en waar hy besluit of iemand 'n operasie benodig. Die res van die week is teaterdae, met 'n lys wat die vorige middag opgestel word sodat elke geval se X-strale en implantate reeds bespreek is voor die eerste sny.\n\nElke oggend begin met saalrondtes, ongeag wat verder op die program is. Die span loop deur die pasiënte van die vorige dae, kyk na wonde, verbande en pynbeheer, en besluit wie huis toe kan gaan. Voor elke operasie is daar 'n kort spaninlywing waar die hele teaterspan die geval deurgaan: watter been, watter kant, watter toerusting.\n\nNá die operasie hou die werk nie op nie. Elke pasiënt kom terug vir opvolgbesoeke sodat die chirurg kan sien of die been reg genees. Bo-op alles is daar aantekeninge, verslae, en oproepe uit die ongevalle-afdeling wat die hele program kan omkeer.",
+
+      pad:        "Dr Venter het MBChB gestudeer en daarna sy MMed in ortopediese chirurgie by die Universiteit Stellenbosch voltooi, gevolg deur die FC Orth (SA) van die Colleges of Medicine of South Africa. Vandag is hy 'n ledemaatrekonstruksie-chirurg by Tygerberg en hy werk ook by die US.\n\nWat hom van baie ander chirurge onderskei, is dat hy terselfdertyd navorser is. Hy het van 2019 af prekliniese muskuloskeletale anatomie aan MBChB-studente aangebied en 'n kinesiologiemodule vir meestersgraadstudente in biomediese ingenieurswese herontwerp. In 2018 het hy met sy 3D-drukker die Ortopediese 3D-drukkerlaboratorium begin, wat teen nou modelle vir tientalle kliniese gevalle gedruk het sodat komplekse operasies vooraf beplan en geoefen kan word. Sy PhD-navorsing gaan oor presies dit.\n\nHy beskryf sy doel as om 'n kliniese wetenskaplike te wees, waar sy werk in die teater die navorsingsvrae oplewer. Dit was vir my die interessantste deel: die operasie en die navorsing is nie twee afsonderlike loopbane nie, hulle voed mekaar.",
+
+      werkplek:   "Tygerberg is 'n akademiese hospitaal, en die skaal daarvan is die eerste ding wat 'n mens tref. Die gange is vol mense, en in die teater self is daar baie TV's en toerusting.\n\nIn die teater is daar 'n hele span mense wat saamwerk: die chirurg, die assistent, die narkotiseur, die skropsuster en die span wat die toerusting aangee.",
+
+      uitgestaan: "Dat sukses hier harde werk, lang ure en deursettingsvermoë verg. Ek het op een dag drie heeltemal verskillende operasies gesien: 'n skouer wat teruggesit is, 'n vinger wat verleng is, en 'n voet wat chirurgies gedraai is. Wat my die meeste bygebly het, is dat 'n groot deel van die werk met regte sae, bore en hamers gedoen word. Op 'n stadium het die chirurg se vinger tydens die skouer-operasie vasgesit, en dit was 'n herinnering dat hierdie werk fisiek is en dat die mense wat dit doen mense bly.",
+
+      dag: [
+        { tyd: "07:00", wat: "Saalrondte saam met die span. Elke pasiënt van die vorige dag se lys word gesien." },
+        { tyd: "08:00", wat: "Oorhandiging. Die nagspan gee deur wat deur die nag gebeur het." },
+        { tyd: "09:00", wat: "Teater. Die eerste geval op die lys, met 'n kort spaninlywing voor die tyd." },
+        { tyd: "13:00", wat: "Tweede geval, en later buitepasiënte met nuwe verwysings." },
+        { tyd: "16:00", wat: "Aantekeninge, verslae, en die volgende dag se X-strale deurgaan." }
+      ],
+
+      vrae: [
+        { v: "Hoe lyk 'n gewone week? Hoeveel is teater, hoeveel kliniek, hoeveel administrasie?",
+          a: "Ongeveer twee dae kliniek en die res teater, met rondtes elke oggend voor alles. Die administrasie kom bo-op alles en gebeur gewoonlik ná die laaste geval." },
+        { v: "Waarom ortopedie en nie 'n ander spesialiteit nie?",
+          a: "Ek hou daarvan om met my hande te werk en 'n impak in mense se lewens te hê. Ortopedie is 'n baie opwindende veld, veral omdat die tegnologie daagliks verbeter." },
+        { v: "Hoe fisies is die werk werklik? Ek het nie verwag om sae en hamers in 'n teater te sien nie.",
+          a: "Ortopedie is die mees fisiese van die chirurgiese velde. Bene moet soms gesny, geboor en selfs in posisie geslaan word, en 'n mens staan ure lank in dieselfde posisie. Dit is baie uitdagend." },
+        { v: "Wat is die swaarste deel van die werk?",
+          a: "Indien iets skeefloop, of as 'n mens nie 'n persoon kan help soos 'n mens graag sou wou nie, omdat dit nie medies moontlik is nie." },
+        { v: "Watter raad het jy vir my?",
+          a: "Dink baie mooi oor wat jy studeer. Medies verg baie deursettingsvermoë, en as dit nie werklik jou passie is nie, gaan dit baie onaangenaam wees. Jy moet ook gemaklik met bloed wees en ongemaklike situasies kan hanteer." }
+      ],
+
+      fotos: [
+        { src: "fotos/ortopeed-span.jpeg", alt: "Die span in teaterdrag voor die X-straalmuur" },
+        { src: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&w=1400&h=1400&q=80",
+          alt: "Illustrasie: 'n chirurgiese span in 'n teater", illustrasie: true },
+        { src: "https://images.unsplash.com/photo-1516069677018-378515003435?auto=format&fit=crop&w=1400&h=1400&q=80",
+          alt: "Illustrasie: 'n X-straalbeeld op 'n ligkas", illustrasie: true },
+        { src: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=1400&h=1400&q=80",
+          alt: "Illustrasie: 'n chirurg onder die teaterligte", illustrasie: true }
+      ]
+    },
+
+    {
+      beroep:  "Ingenieurswese",
+      persoon: "Niki Steenkamp",
+      rol:     "Optiese ingenieur",
+      ligging: { naam: "Dragonfly Aerospace, Stellenbosch", koordinate: "",
+                 kaart: "https://www.google.com/maps/search/?api=1&query=Dragonfly+Aerospace+Stellenbosch" },
+
+      opsomming: "Dragonfly bou kameras wat in die ruimte moet werk. Alles gebeur agter 'n sluis, in 'n skoonkamer, en alles moet die eerste keer reg wees.",
+
+      daagliks:   "Die dag begin met vergaderings tussen die tegniese afdelings om die week se prioriteite te bevestig. Optika, elektronika, meganies en sagteware werk almal aan dieselfde kamera, en elke span se werk hang van 'n ander een af.\n\nDie res van die dag skuif tussen drie soorte werk. Die eerste is ontwerp: nuwe kameras vir nuwe kliënte, gemodelleer en gesimuleer lank voordat enigiets gebou word. Die tweede is verifikasie, en dit is die grootste deel. 'n Kamera moet die skudding van 'n lansering oorleef, in 'n vakuum werk en by uiterste temperature nog steeds skerp beelde lewer, en elkeen van daardie vereistes word afsonderlik getoets. Die derde is die produksielyn, want hulle bou nie een kamera nie maar 'n reeks daarvan.",
+
+      pad:        "Niki Steenkamp het sy BEng in Elektriese en Elektroniese Ingenieurswese aan die Noordwes-Universiteit voltooi, en daarna sy MEng in Satellietingenieurswese aan die Universiteit Stellenbosch. Albei cum laude. Daardie meestersgraad het van 1996 tot 1999 geloop, presies die jare waarin Sunsat, Suid-Afrika se eerste satelliet, deur nagraadse studente op Stellenbosch gebou en in Februarie 1999 gelanseer is.\n\nDaarna het hy in die bedryf gebly wat uit Sunsat gegroei het, naamlik Sunspace op Stellenbosch waar hy die ontwerpsingenieur en later stelselingenieur was. Vandaar was hy vyf jaar lank stelselingenieur by Denel Spaceteq.\n\nSedert Augustus 2020 is hy by Dragonfly, waar hy aan die kameras werk wat in die ruimte gebruik word.",
+
+      werkplek:   "Dragonfly se fasiliteit is in Stellenbosch en is kleiner as wat 'n mens sou verwag vir werk van hierdie skaal. Die vervaardiging gebeur in groot skoonkamers, en jy kom net daar in deur 'n sluis waar jy eers oorpakke, haarnette en oorskoene aantrek.\n\nBinne is dit stil, helder en buitengewoon skoon. Daar is optiese banke waar lense en sensors gekalibreer word, 'n vakuumkamer, en 'n skudtafel waarop die impak van lansering op 'n toestel getoets word.",
+
+      uitgestaan: "Sodra iets gelanseer is, kan dit nooit weer reggemaak word nie, en dít verklaar die sorgvuldige en deeglike manier waarop hulle werk. 'n Satelliet sirkel die aarde in ongeveer 90 minute, met sowat 45 minute in die son en 45 minute in die aarde se skaduwee. Die satelliet word tot ongeveer 120 °C warm, en 45 minute later daal die temperatuur tot ongeveer minus 150 °C. Selfs die kleinste korrel stof op 'n sensor is 'n fout wat niemand ooit weer kan gaan afvee nie. Daarom die skoonkamer, en daarom word alles soveel keer getoets. Dit is sowaar 'n interessante veld.",
+
+      dag: [
+        { tyd: "08:30", wat: "Spanvergadering oor die week se prioriteite en watter span op wie wag." },
+        { tyd: "11:00", wat: "Ontwerp en simulasie by die rekenaar: optiese pad, sensorkeuse, termiese modelle." },
+        { tyd: "13:30", wat: "Skoonkamer. Aantrek deur die sluis, dan integrasie of 'n toetslopie op 'n eenheid." },
+        { tyd: "15:30", wat: "Toetsresultate deurgaan, dokumentasie, en terugvoer aan die kliënt." }
+      ],
+
+      vrae: [
+        { v: "Hoe lyk 'n gewone dag? Hoeveel is by 'n rekenaar, hoeveel in die skoonkamer, hoeveel in vergaderings?",
+          a: "Dit wissel met die projek se fase. Vroeg in 'n ontwerp is dit oorwegend simulasie en modellering met baie rekenaarwerk, maar later skuif die werk meestal na die skoonkamers en die toetsbanke toe." },
+        { v: "Watter spanne moet saamwerk om een kamera te bou?",
+          a: "Optika, elektronika, meganies en sagteware, plus die produksiespan. Een span se vertraging hou al die ander op, en daarom is die daaglikse vergaderings nie opsioneel nie." },
+        { v: "Wat gebeur as iets ná die lansering breek?",
+          a: "Niks. Jy kan nie opgaan en dit in die ruimte regmaak nie. Dit is die hele rede waarom soveel op die grond getoets word: die toets is die enigste kans wat jy kry." },
+        { v: "Watter toets laat die meeste ontwerpe val?",
+          a: "Die skudbank is beslis die uitdagendste toets, maar dit is ook die belangrikste een." },
+        { v: "Watter vakke moet ek nou al kies?",
+          a: "Wiskunde en Fisiese Wetenskappe is krities. Indien jy AdMaths of AdPhysics op skool neem, wat verdere studies in wiskunde en fisiese wetenskappe is, sal dit jou universiteitswerk vergemaklik." }
+      ],
+
+      fotos: [
+        { src: "fotos/dragonfly-skoonkamer.jpeg", alt: "Die vakuumkamer in die skoonkamer" },
+        { src: "fotos/dragonfly-sluis.jpeg",      alt: "Die sluis waar jy aantrek voor jy ingaan" },
+        { src: "fotos/df-optieklab.jpg",
+          alt: "Die optiese laboratorium waar lense en sensors gekalibreer word",
+          illustrasie: true, merk: "Dragonfly-foto" },
+        { src: "fotos/df-skudtafel.jpg",
+          alt: "Die skudtafel waarop toerusting die geweld van 'n lansering moet oorleef",
+          illustrasie: true, merk: "Dragonfly-foto" }
+      ]
+    },
+
+    {
+      beroep:  "TV-kameras",
+      rol:     "Kamera-operateur",
+      ligging: { naam: "Media24, Kaapstad", koordinate: "",
+                 kaart: "https://www.google.com/maps/search/?api=1&query=Media24+Centre+Cape+Town" },
+
+      opsomming: "Agt kameras, een ateljee, en 'n beheerkamer waar iemand besluit wat die land gaan vermaak.",
+
+      daagliks:   "Die dag begin met 'n vergadering waar die span deurgaan wat daardie dag verfilm word. Daarna gaan die operateurs na hulle posisies toe om elke kamera op te stel en te konfigureer: lense, hoogtes, witbalans, en die instellings wat oor al agt kameras dieselfde moet wees. Indien die kleur tussen kameras wissel, sien die kyker dit onmiddellik raak.\n\nVoor die opname volg 'n tweede vergadering saam met die vervaardiger, die regisseur en die redigeringspan. Hier word besluit wat elke kamera se werk is.\n\nDan kom 'n toetslopie waar elke kamera se beeld getoets en in die beheerkamer nagegaan word. Sodra die opname begin, is die werk om die skoot te lewer en om te doen wat die regisseur deur die oorfone vra.",
+
+      pad:        "Die operateurs met wie ek gesels het, het nie almal dieselfde pad geloop nie, en dit was juis die punt. Party het formeel in film- en televisieproduksie studeer, ander het op die vloer begin as kabeltrekkers en kamera-assistente en met ervaring oor tyd ontwikkel.\n\nWat hulle almal gedeel het, is dat werk deur aanbeveling kom. Jy word gehuur omdat iemand jou al sien werk het, en nie noodwendig omdat jy 'n sertifikaat het nie.",
+
+      werkplek:   "Anders as die eerste twee dae was dit nie 'n gewone werkskadu nie. Ek was 'n deelnemer aan Wie Weet Wat, 'n Media24-program op VIA, en moes drie dae lank op die stel wees vir die opnames. Dit het my van die ander kant van die kamera af laat sien hoe die operateurs werk, en tussen opnames kon ek met hulle gesels.\n\nDie ateljee is helder onder die ligte, met agt kameras op een klein stel. Agter die ateljee is die beheerkamer, waar al agt beelde op die skerms langs mekaar gesien kan word. Dit is die stilste plek in die gebou en terselfdertyd die plek waar die meeste besluite geneem word. Daar is baie onderbrekings tydens opnames: vir 'n episode van 25 minute het dit ongeveer twee uur geneem om op te neem.",
+
+      uitgestaan: "Die meeste werk vir TV is agter die skerms. Ek het nie besef hoe tegnies 'n kamera-operateur se werk werklik is nie, en hoeveel verstellings en besluite vir elke skoot gemaak moet word nie. Omdat ek self voor die kamera gestaan het, kon ek sien hoeveel voorbereiding en hoeveel mense agter 'n paar minute televisie sit, en niks daarvan is sigbaar vir die kyker nie.",
+
+      dag: [
+        { tyd: "09:00", wat: "Oggendvergadering. Die dag se program en wie waar staan." },
+        { tyd: "10:00", wat: "Kameras opstel en konfigureer, dan die vergadering saam met die produsent en regisseur." },
+        { tyd: "10:30", wat: "Toetslopie. Elke kamera se beeld word in die beheerkamer nagegaan en die kleur gelyk gestel." },
+        { tyd: "11:00", wat: "Opnames, tot 13:00." },
+        { tyd: "13:00", wat: "Middagete." },
+        { tyd: "14:00", wat: "Verdere opnames, tot 18:00." }
+      ],
+
+      vrae: [
+        { v: "Wie besluit watter skote in die finale program is?",
+          a: "Die regisseur is oorhoofs in beheer, maar die harde werk word deur die video-regisseur gedoen, wat weer baie afhanklik is van die gehalte werk wat die kamera-operateur gelewer het." },
+        { v: "Wat is die verskil tussen vryskutwerk en 'n vaste pos?",
+          a: "Vryskutwerk is die algemeenste werk in hierdie rigting, en dit betaal per projek of per dag op die stel. Jy word meer betaal as wat 'n vaste pos betaal, maar dit is nie 'n stabiele inkomste nie." },
+        { v: "Wat gaan verkeerd op 'n slegte dag?",
+          a: "Daar kan baie dinge verkeerd gaan. Die akteurs of vrywilligers wat opgeneem word, kan sukkel. Daar kan ook tegniese probleme met die klank of die beeld ontstaan, wat alles moeiliker maak." },
+        { v: "Ek is 17 en maak soms video's. Wat kan ek nou al doen om te verbeter?",
+          a: "Jy het nou die perfekte geleentheid om kreatief te wees. Eksperimenteer soveel as moontlik met verskillende skote, en gebruik die tyd om die regte sagtewareprogramme aan te leer. Probeer ook soveel praktiese ervaring as moontlik ná skool kry." }
+      ],
+
+      fotos: [
+        { src: "fotos/www-ateljee.jpeg",     alt: "Die ateljee met die Wie Weet Wat-logo" },
+        { src: "fotos/www-stel-daniel.jpeg", alt: "Op die stel tussen die opnames" },
+        { src: "fotos/www-beheerkamer.jpeg", alt: "Die beheerkamer agter die ateljee" },
+        { src: "fotos/www-multiviewer.jpeg", alt: "Al agt kameras op een skerm" }
+      ]
+    }
+  ],
+
+  slot_foto: { src: "fotos/www-stel-daniel.jpeg", alt: "Alleen op die Wie Weet Wat-stel tussen die opnames" },
+  slot_byskrif: "Daniël Schoonraad · 2026",
+  slot_teks: "Drie dae was nie genoeg om te weet wat ek met my lewe wil doen nie. Maar dit was 'n *begin*. Die werkskadu het my gehelp om na te dink oor 'n verskeidenheid beroepe. Ek gaan volgende jaar baie meer hieroor lees, en doelbewus meer mense gaan werkskadu."
+};
+</script>
+
+<script>(function () {
+  "use strict";
+
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+  window.addEventListener("load", function () { window.scrollTo(0, 0); });
+
+  var D = window.DATA || {};
+  var O = (D.onderhoude || []).slice(0, 3);
+  var stil = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fynwyser = window.matchMedia("(pointer:fine)").matches;
+
+  function el(t, c, x) { var n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; }
+  function vol(v) { return typeof v === "string" ? v.trim().length > 0 : !!v; }
+  function prosa(t) {
+    var f = document.createDocumentFragment();
+    String(t).split(/\n\s*\n/).forEach(function (b) { if (b.trim()) f.appendChild(el("p", null, b.trim())); });
+    return f;
+  }
+
+  function merk(node, teks) {
+    node.textContent = "";
+    String(teks).split(/(\*[^*]+\*)/).forEach(function (s) {
+      if (!s) return;
+      if (s.charAt(0) === "*" && s.slice(-1) === "*") node.appendChild(el("em", null, s.slice(1, -1)));
+      else node.appendChild(document.createTextNode(s));
+    });
+  }
+
+  function woordeOp(node) {
+    var stukke = [];
+    node.childNodes.forEach ? null : null;
+    Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+      var groen = n.nodeType === 1 && n.tagName === "EM";
+      String(n.textContent).split(/(\s+)/).forEach(function (w) {
+        if (!w.trim()) { stukke.push(null); return; }
+        stukke.push({ w: w, groen: groen });
+      });
+    });
+    node.textContent = "";
+    node.classList.add("woorde");
+    var i = 0;
+    stukke.forEach(function (s) {
+      if (!s) { node.appendChild(document.createTextNode(" ")); return; }
+      var buite = el("span", "w");
+      var binne = el("span");
+      if (s.groen) { var em = el("em", null, s.w); binne.appendChild(em); }
+      else binne.textContent = s.w;
+      binne.style.transitionDelay = (i * 55) + "ms";
+      buite.appendChild(binne);
+      node.appendChild(buite);
+
+      i++;
+    });
+  }
+
+  var ringe = [];
+
+  var WYK = [0, -7, 5, -4, 8, -6, 3, -5];
+
+  var MODUSSE = {
+    vinnig: function (c, R, t, as) {
+      var h = c.hoek + t * R.spoed * R.rigting * 2.5;
+      return {
+        x: Math.cos(h) * as * 0.335,
+        y: Math.sin(h) * as * 0.335,
+        r: c.kantel,
+        s: 0.96 + ((Math.sin(h) + 1) / 2) * 0.07,
+        z: (Math.sin(h) + 1) / 2 * 30,
+        o: 1
+      };
+    },
+
+    diepte: function (c, R, t, as) {
+      var h = c.hoek + t * R.spoed * R.rigting * 1.35;
+      var voor = (Math.sin(h) + 1) / 2;
+      return {
+
+        x: Math.cos(h) * as * 0.40,
+        y: Math.sin(h) * as * 0.13 + Math.sin(t * 0.5 + c.fase) * 5,
+        r: c.kantel * 0.5 + Math.sin(h) * 3,
+        s: 0.66 + voor * 0.56,
+        z: voor * 60,
+        o: 0.5 + voor * 0.5
+      };
+    },
+
+    fokus: function (c, R, t, as) {
+      var TYDPERK = 4.2;
+      var f = t / TYDPERK;
+      var basis = Math.floor(f);
+      var deel = (f - basis) / 0.55;
+      var m = deel >= 1 ? 1 : sagIn(deel);
+      return meng(fokusPlek(c, R, as, basis % R.n),
+                  fokusPlek(c, R, as, (basis + 1) % R.n), m);
+    }
+  };
+
+  function fokusPlek(c, R, as, beurt) {
+    var d = (c.i - beurt + R.n) % R.n;
+    if (d > R.n / 2) d -= R.n;
+
+    if (d === 0) return { x: 0, y: 0, r: 0, s: 1.34, z: 90, o: 1 };
+    if (d === -1 || d === 1) {
+      return { x: d * as * 0.44, y: as * 0.05, r: d * 11, s: 0.72, z: 40, o: 1 };
+    }
+
+    return { x: Math.cos(c.hoek) * as * 0.52, y: Math.sin(c.hoek) * as * 0.52,
+             r: c.kantel, s: 0.6, z: 0, o: 0 };
+  }
+
+  function meng(A, B, m) {
+    return {
+      x: A.x + (B.x - A.x) * m,
+      y: A.y + (B.y - A.y) * m,
+      r: A.r + (B.r - A.r) * m,
+      s: A.s + (B.s - A.s) * m,
+      z: A.z + (B.z - A.z) * m,
+      o: A.o + (B.o - A.o) * m
+    };
+  }
+
+  var MODUS_ORDE = ["vinnig", "diepte", "fokus"];
+
+  function maakRing(host, fotos, spoed, rigting, keuse) {
+    keuse = keuse || {};
+    var smal = window.matchMedia("(max-width:760px)").matches;
+    var maks = smal ? Math.min(keuse.maks || 6, keuse.maksSmal || 6) : (keuse.maks || 6);
+    var lys = (fotos || []).slice(0, maks);
+    if (!lys.length) return null;
+    var n = lys.length;
+
+    var kaarte = lys.map(function (f, i) {
+      var k = el("div", "kaart");
+      k.style.transitionDelay = (i * 70) + "ms";
+
+      var binne = el("div", "vel");
+      if (vol(f.src)) {
+        var img = el("img");
+        img.src = f.src; img.alt = f.alt || ""; img.decoding = "async"; img.draggable = false;
+        img.addEventListener("error", function () {
+          img.remove();
+          binne.classList.add("leegfoto");
+          binne.appendChild(el("span", null, "foto " + (i + 1)));
+        });
+        binne.appendChild(img);
+      } else {
+        binne.classList.add("leegfoto");
+        binne.appendChild(el("span", null, "foto " + (i + 1)));
+      }
+      if (f.illustrasie) binne.appendChild(el("span", "merk-il", f.merk || "Illustrasie"));
+      k.setAttribute("data-volg", "");
+      k.appendChild(binne);
+      host.appendChild(k);
+
+      var c = {
+        node: k, vel: binne, i: i, bron: f,
+        hoek: ((Math.PI * 2 / n) * i - Math.PI / 2) + (WYK[i % WYK.length] * Math.PI / 180),
+        fase: i * 1.9,
+        kantel: (i % 2 ? 1 : -1) * (2.2 + (i % 3) * 1.3),
+        oor: 0, oorDoel: 0
+      };
+
+      if (vol(f.src)) {
+        k.addEventListener("pointerenter", function () { c.oorDoel = 1; });
+        k.addEventListener("pointerleave", function () { c.oorDoel = 0; });
+        k.addEventListener("click", function () { maakGroot(f); });
+      }
+      return c;
+    });
+
+    var R = {
+      host: host, kaarte: kaarte, n: n, spoed: spoed, rigting: rigting,
+
+      straal: (smal && keuse.straalSmal) || keuse.straal || 0.30,
+      kaart: (smal && keuse.kaartSmal) || keuse.kaart || 0.34,
+      lw: 0, lh: 0,
+      mx: 0, my: 0, dmx: 0, dmy: 0,
+
+      rolHoek: 0, rolDoel: 0, rolDraai: keuse.rolDraai || 0,
+
+      modusse: !!keuse.modusse,
+      m: 0, van: 0, na: 0, begin: 0, duur: 3.2, wag: 6.5
+    };
+
+    host.addEventListener("pointermove", function (e) {
+      var r = host.getBoundingClientRect();
+      R.mx = ((e.clientX - r.left) / r.width - .5) * 2;
+      R.my = ((e.clientY - r.top) / r.height - .5) * 2;
+    });
+    host.addEventListener("pointerleave", function () { R.mx = 0; R.my = 0; });
+
+    ringe.push(R);
+    setTimeout(function () { host.classList.add("in"); }, 60);
+    teken(R, 0);
+    return R;
+  }
+
+  function sirkel(c, R, t, as) {
+    var h = c.hoek + t * R.spoed * R.rigting + R.rolHoek;
+    var voor = (Math.sin(h) + 1) / 2;
+
+    var st = R.n === 1 ? 0 : as * R.straal;
+    return {
+      x: Math.cos(h) * st,
+      y: Math.sin(h) * st,
+      r: c.kantel,
+      s: 0.955 + voor * 0.075,
+      z: voor * 40,
+      o: 0.74 + voor * 0.26
+    };
+  }
+
+  function sagIn(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+  function teken(R, t) {
+    var r = R.host.getBoundingClientRect();
+    var as = Math.min(r.width, r.height);
+    if (!as) return;
+
+    if (r.width !== R.lw || r.height !== R.lh) {
+      R.lw = r.width; R.lh = r.height;
+      var bp = Math.round(as * R.kaart);
+      R.kaarte.forEach(function (k) { k.node.style.width = bp + "px"; });
+    }
+
+    R.dmx += (R.mx - R.dmx) * 0.045;
+    R.dmy += (R.my - R.dmy) * 0.045;
+
+    if (R.rolDraai) {
+      var vh = window.innerHeight;
+      var deur = ((r.top + r.height / 2) - vh / 2) / vh;
+      R.rolDoel = Math.max(-1.2, Math.min(1.2, deur)) * R.rolDraai;
+      R.rolHoek += (R.rolDoel - R.rolHoek) * 0.06;
+    }
+
+    var meng = 0, fa = sirkel, fb = sirkel;
+
+    if (R.modusse && !stil) {
+      if (t > R.wag) {
+        R.van = R.na;
+        R.na = (R.na + 1) % MODUS_ORDE.length;
+        R.begin = t;
+        R.wag = t + R.duur + 8.5;
+      }
+      fa = MODUSSE[MODUS_ORDE[R.van]];
+      fb = MODUSSE[MODUS_ORDE[R.na]];
+      meng = R.van === R.na ? 0 : sagIn(Math.min(1, (t - R.begin) / R.duur));
+    }
+
+    R.kaarte.forEach(function (c) {
+      c.oor += (c.oorDoel - c.oor) * 0.12;
+
+      var A = fa(c, R, t, as);
+      var B = fb(c, R, t, as);
+
+      var x = A.x + (B.x - A.x) * meng;
+      var y = A.y + (B.y - A.y) * meng;
+      var draai = A.r + (B.r - A.r) * meng;
+      var skaal = A.s + (B.s - A.s) * meng;
+      var laag = A.z + (B.z - A.z) * meng;
+      var deurskyn = A.o + (B.o - A.o) * meng;
+
+      if (!stil) y += Math.sin(t * 0.34 + c.fase) * 3.2;
+
+      x += R.dmx * 11 * (0.55 + laag / 60);
+      y += R.dmy * 8 * (0.55 + laag / 60);
+
+      skaal *= (1 + c.oor * 0.04);
+
+      c.node.style.zIndex = String(10 + Math.round(laag + c.oor * 50));
+      c.node.style.transform =
+        "translate(-50%,-50%) translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0) " +
+        "rotate(" + draai.toFixed(2) + "deg) scale(" + skaal.toFixed(3) + ")";
+      c.node.style.pointerEvents = deurskyn < 0.12 ? "none" : "";
+
+      c.vel.style.opacity = deurskyn.toFixed(3);
+      c.vel.style.boxShadow =
+        "0 " + (8 + laag * 0.32).toFixed(0) + "px " + (24 + laag * 0.5).toFixed(0) +
+        "px rgba(20,18,14," + (0.08 + laag * 0.0022 + c.oor * 0.08).toFixed(3) + ")";
+    });
+  }
+
+  var beelde = [];
+
+  var begin = performance.now();
+  function lus(nou) {
+    var t = (nou - begin) / 1000;
+    var vh = window.innerHeight;
+
+    for (var i = 0; i < ringe.length; i++) {
+      var rb = ringe[i].host.getBoundingClientRect();
+      if (rb.bottom > -240 && rb.top < vh + 240) teken(ringe[i], t);
+    }
+
+    for (var j = 0; j < beelde.length; j++) {
+      var b = beelde[j];
+      var r = b.raam.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) continue;
+      b.dx += (b.mx - b.dx) * 0.06;
+      b.dy += (b.my - b.dy) * 0.06;
+
+      var p = (r.top + r.height / 2 - vh / 2) / vh;
+      b.img.style.transform =
+        "scale(1.12) translate3d(" + (b.dx * -3.2).toFixed(2) + "%," +
+        (b.dy * -3.2 + p * -3).toFixed(2) + "%,0)";
+    }
+
+    requestAnimationFrame(lus);
+  }
+
+  function volgBeeld(raam, img) {
+    var b = { raam: raam, img: img, mx: 0, my: 0, dx: 0, dy: 0 };
+    raam.addEventListener("pointermove", function (e) {
+      var r = raam.getBoundingClientRect();
+      b.mx = ((e.clientX - r.left) / r.width - .5) * 2;
+      b.my = ((e.clientY - r.top) / r.height - .5) * 2;
+    });
+    raam.addEventListener("pointerleave", function () { b.mx = 0; b.my = 0; });
+    beelde.push(b);
+    return b;
+  }
+
+  document.getElementById("bar-regs").textContent =
+    [D.leerder, D.graad, D.vak, D.ingehandig].filter(vol).join("  ·  ");
+  var jaar = (D.ingehandig || "").match(/\d{4}/);
+  document.getElementById("krediet").textContent =
+    "Werkskadu © " + (jaar ? jaar[0] : new Date().getFullYear()) + " " + (D.leerder || "");
+  document.getElementById("hero-lei").textContent = D.hero_lei || "";
+
+  var hoofRing = document.getElementById("ring-hero");
+  hoofRing.classList.add("hoof");
+  maakRing(hoofRing, D.hero_fotos, 0.046, 1, {
+    maks: 6, straal: 0.335, kaart: 0.30,
+    maksSmal: 6, straalSmal: 0.38, kaartSmal: 0.28,
+    modusse: true
+  });
+
+  function speld(lig) {
+    if (!lig || !vol(lig.naam)) return null;
+    var node = vol(lig.kaart) ? el("a", "speld") : el("span", "speld");
+    if (vol(lig.kaart)) {
+      node.href = lig.kaart;
+      node.target = "_blank";
+      node.rel = "noopener noreferrer";
+    }
+    node.innerHTML =
+      '<svg viewBox="0 0 11 14" aria-hidden="true">' +
+      '<circle cx="5.5" cy="5.3" r="2"></circle>' +
+      '<path d="M5.5 0C2.46 0 0 2.37 0 5.3c0 3.9 5.5 8.7 5.5 8.7S11 9.2 11 5.3C11 2.37 8.54 0 5.5 0zm0 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2z"></path>' +
+      '</svg>';
+    node.appendChild(el("span", null, lig.naam));
+    if (vol(lig.koordinate)) node.appendChild(el("span", "ko", lig.koordinate));
+    return node;
+  }
+
+  var blok = document.getElementById("inhoudsblok");
+
+  O.forEach(function (o, i) {
+
+    var ins = (D.insigte || [])[i];
+    if (ins && vol(ins.teks)) {
+      var sec = el("section", "insig wrap" + (i % 2 ? " omgekeer" : ""));
+      var p = el("p");
+      merk(p, ins.teks);
+      woordeOp(p);
+      sec.appendChild(p);
+
+      if (ins.foto && vol(ins.foto.src)) {
+        var fig = el("figure", "grootbeeld");
+        var img = el("img");
+        img.src = ins.foto.src; img.alt = ins.foto.alt || ""; img.decoding = "async"; img.draggable = false;
+        fig.appendChild(img);
+        if (ins.foto.illustrasie) fig.appendChild(el("span", "merk-il", "Illustrasie"));
+        if (vol(ins.foto.byskrif)) fig.appendChild(el("figcaption", null, ins.foto.byskrif));
+        fig.setAttribute("data-volg", "");
+        sec.appendChild(fig);
+        volgBeeld(fig, img);
+      }
+      blok.appendChild(sec);
+    }
+
+    var s = el("section", "onderhoud wrap");
+    s.id = "onderhoud-" + (i + 1);
+
+    var kop = el("div", "o-kop op");
+    var nr = el("span", "n");
+    nr.appendChild(el("span", null, "0" + (i + 1)));
+    kop.appendChild(nr);
+    kop.appendChild(el("h2", null, vol(o.beroep) ? o.beroep : "— beroep " + (i + 1)));
+    var feite = el("div", "feite");
+    [o.persoon, o.rol, o.datum].forEach(function (x) { if (vol(x)) feite.appendChild(el("span", null, x)); });
+    var sp = speld(o.ligging);
+    if (sp) feite.appendChild(sp);
+    kop.appendChild(feite);
+    s.appendChild(kop);
+
+    var verhoog = el("div", "verhoog");
+    var host = el("div", "ring");
+        verhoog.appendChild(host);
+    s.appendChild(verhoog);
+    maakRing(host, o.fotos, 0.04, i % 2 ? -1 : 1,
+             { maks: 4, straal: 0.315, kaart: 0.44,
+               maksSmal: 4, straalSmal: 0.30, kaartSmal: 0.42,
+               rolDraai: (i % 2 ? -1 : 1) * 0.85 });
+
+    var lyf = el("div", "o-lyf");
+
+    if (vol(o.opsomming)) {
+      var ops = el("div", "opsom op");
+      ops.appendChild(prosa(o.opsomming));
+      lyf.appendChild(ops);
+    }
+
+    var drie = el("div", "drie op");
+    [["Die werk, dag tot dag", o.daagliks],
+     ["Die pad hierheen", o.pad],
+     ["Die werkplek", o.werkplek]].forEach(function (paar) {
+      var d = el("div");
+      d.appendChild(el("h3", "et", paar[0]));
+      if (vol(paar[1])) d.appendChild(prosa(paar[1]));
+      drie.appendChild(d);
+    });
+    lyf.appendChild(drie);
+
+    var dagitems = (o.dag || []).filter(function (d) { return vol(d.tyd) || vol(d.wat); });
+    if (dagitems.length) {
+      var dd = el("div", "op");
+      dd.appendChild(el("h3", "et", "Die dag"));
+      var ol = el("ol", "dag");
+      dagitems.forEach(function (d) {
+        var li = el("li");
+        li.appendChild(el("time", null, d.tyd || "—"));
+        li.appendChild(el("p", null, d.wat || "—"));
+        ol.appendChild(li);
+      });
+      dd.appendChild(ol);
+      lyf.appendChild(dd);
+    }
+
+    var vrae = (o.vrae || []).filter(function (q) { return vol(q.v) || vol(q.a); });
+    if (vrae.length) {
+      var qb = el("div", "op");
+      qb.appendChild(el("h3", "et", "Die onderhoud"));
+      var ul = el("ul", "qa");
+      vrae.forEach(function (q) {
+        var li = el("li");
+        li.appendChild(el("p", "v", q.v || "—"));
+        li.appendChild(el("p", "a", q.a || "—"));
+        ul.appendChild(li);
+      });
+      qb.appendChild(ul);
+      lyf.appendChild(qb);
+    }
+
+    var ub = el("div", "uit op");
+    ub.appendChild(el("h3", "et", "Wat uitgestaan het"));
+    ub.appendChild(el("span", "hand", vol(o.uitgestaan) ? o.uitgestaan : "— een of twee sinne, in jou eie woorde"));
+    lyf.appendChild(ub);
+
+    s.appendChild(lyf);
+    blok.appendChild(s);
+  });
+
+  ringe.forEach(function (R) { teken(R, 0); });
+
+  var portret = document.getElementById("slot-portret");
+  var sf = D.slot_foto || {};
+  if (vol(sf.src)) {
+    var im = el("img");
+    im.src = sf.src; im.alt = sf.alt || ""; im.decoding = "async"; im.draggable = false;
+    portret.appendChild(im);
+    volgBeeld(portret, im);
+  }
+  if (vol(D.slot_byskrif)) portret.appendChild(el("figcaption", "op-teks", D.slot_byskrif));
+  var slotP = document.getElementById("slot-teks");
+  merk(slotP, D.slot_teks || "");
+  woordeOp(slotP);
+
+  var lig = document.getElementById("lig");
+  var ligBeeld = lig.querySelector("img");
+  function maakGroot(bron) {
+    ligBeeld.src = bron.src;
+    ligBeeld.alt = bron.alt || "";
+    var ou = lig.querySelector(".merk-il");
+    if (ou) ou.remove();
+    if (bron.illustrasie) {
+      var m = el("span", "merk-il", (bron.merk || "Illustrasie") + " · nie my eie foto nie");
+      m.style.cssText += "left:50%;transform:translateX(-50%);bottom:calc(var(--kant) + 6px)";
+      lig.appendChild(m);
+    }
+    lig.classList.add("oop");
+    lig.setAttribute("aria-hidden", "false");
+    document.body.classList.add("vas");
+  }
+  function ligToe() {
+    lig.classList.remove("oop");
+    lig.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("vas");
+  }
+  lig.addEventListener("click", ligToe);
+  document.getElementById("lig-toe").addEventListener("click", ligToe);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") ligToe(); });
+
+  var pv = document.getElementById("privaat");
+  function privaat(ja) {
+    pv.classList.toggle("oop", ja);
+    pv.setAttribute("aria-hidden", ja ? "false" : "true");
+    document.body.classList.toggle("vas", ja);
+  }
+  document.getElementById("privaat-oop").addEventListener("click", function () { privaat(true); });
+  document.getElementById("privaat-toe").addEventListener("click", function () { privaat(false); });
+
+  var wagOp = Array.prototype.slice.call(document.querySelectorAll(".op, .woorde, .grootbeeld"));
+
+  function onthul(n) {
+    n.classList.add("in");
+    var k = wagOp.indexOf(n);
+    if (k > -1) wagOp.splice(k, 1);
+  }
+  function kontroleer() {
+    if (!wagOp.length) return;
+    var vh = window.innerHeight;
+    wagOp.slice().forEach(function (n) {
+      var r = n.getBoundingClientRect();
+
+      if (r.top < vh * 0.92) onthul(n);
+    });
+  }
+
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { onthul(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: .05 });
+  wagOp.forEach(function (n) { io.observe(n); });
+  setTimeout(kontroleer, 1200);
+
+  if (fynwyser && !stil) {
+    var volger = document.getElementById("volger");
+    var vx = window.innerWidth / 2, vy = window.innerHeight / 2, tx = vx, ty = vy;
+
+    document.addEventListener("pointermove", function (e) {
+      tx = e.clientX; ty = e.clientY;
+      volger.classList.add("aan");
+      var doel = e.target.closest ? e.target.closest("[data-volg]") : null;
+      volger.classList.toggle("groot", !!doel);
+    }, { passive: true });
+    document.addEventListener("pointerleave", function () { volger.classList.remove("aan"); });
+
+    (function glip() {
+      vx += (tx - vx) * 0.10;
+      vy += (ty - vy) * 0.10;
+      volger.style.transform = "translate3d(" + vx.toFixed(1) + "px," + vy.toFixed(1) + "px,0)";
+      requestAnimationFrame(glip);
+    })();
+  }
+
+  var vorder = document.getElementById("vorder");
+  var bar = document.getElementById("bar");
+  var wag = false;
+  function rol() {
+    wag = false;
+    var y = window.scrollY || 0;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    vorder.style.transform = "scaleX(" + (h > 0 ? Math.min(1, y / h) : 0) + ")";
+
+    bar.classList.toggle("klein", y > 24);
+    bar.classList.toggle("weg", y > window.innerHeight * 0.35);
+    kontroleer();
+  }
+  window.addEventListener("scroll", function () {
+
+    kontroleer();
+    if (!wag) { wag = true; requestAnimationFrame(rol); }
+  }, { passive: true });
+  rol();
+
+  (function () {
+    var laag = document.getElementById("intro");
+    var maat = document.getElementById("intro-maat");
+    var nodes = [document.getElementById("st1"), document.getElementById("st2"), document.getElementById("st3")];
+    var reels = (D.opening || []).filter(vol).slice(0, 3);
+    var klaar = false;
+
+    requestAnimationFrame(lus);
+
+    if (stil || !reels.length) { laag.remove(); document.body.classList.remove("vas"); return; }
+
+    document.body.classList.add("vas");
+    reels.forEach(function (r, i) { merk(nodes[i], r); });
+    nodes.slice(reels.length).forEach(function (n) { n.remove(); });
+
+    var uitgetree = false;
+    function uittree() {
+      if (klaar || uitgetree) return;
+      uitgetree = true;
+      clearTimeout(tikker);
+      nodes.slice(0, -1).forEach(function (n, k) {
+        n.style.transitionDelay = (k * 260) + "ms";
+        n.classList.add("wegvaag");
+      });
+
+      tikker = setTimeout(sluit, 4200);
+    }
+
+    function sluit() {
+      if (klaar) return;
+      klaar = true;
+      laag.classList.add("weg");
+      document.body.classList.remove("vas");
+      setTimeout(function () { laag.remove(); rol(); }, 1300);
+    }
+
+    var NORMAAL = 1500, VINNIG = 700, LEES = 650;
+    var i = 0, tikker = null, gewys = 0;
+
+    function volgende(wag) {
+      if (klaar) return;
+      clearTimeout(tikker);
+      if (i >= reels.length) {
+
+        tikker = setTimeout(uittree, Math.max(wag, 1450));
+        return;
+      }
+      nodes[i].classList.add("aan");
+      gewys = performance.now();
+      maat.style.width = Math.round(((i + 1) / reels.length) * 100) + "%";
+      i++;
+      tikker = setTimeout(function () { volgende(NORMAAL); }, wag);
+    }
+    tikker = setTimeout(function () { volgende(NORMAAL); }, 450);
+
+    function jaag() {
+
+      if (klaar || uitgetree) return;
+      var oor = LEES - (performance.now() - gewys);
+      if (i >= reels.length) {
+        if (oor > 0) return;
+        uittree();
+        return;
+      }
+      if (oor > 0) {
+        clearTimeout(tikker);
+        tikker = setTimeout(function () { volgende(VINNIG); }, oor);
+        return;
+      }
+      volgende(VINNIG);
+    }
+    laag.addEventListener("wheel", function (e) { e.preventDefault(); jaag(); }, { passive: false });
+    laag.addEventListener("touchmove", function (e) { e.preventDefault(); jaag(); }, { passive: false });
+
+    laag.addEventListener("click", sluit);
+    laag.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Escape") sluit();
+      if (e.key === "ArrowDown" || e.key === "PageDown") jaag();
+    });
+    laag.focus();
+  })();
+})();
+</script>
+</body>
+</html>
